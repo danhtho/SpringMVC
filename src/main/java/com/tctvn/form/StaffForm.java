@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import com.tctvn.annotation.AlphanumericSymbol;
 import com.tctvn.annotation.DateFormat;
 import com.tctvn.annotation.EnumRange;
 import com.tctvn.dao.StaffDao;
@@ -22,6 +23,7 @@ import com.tctvn.utils.DateUtils;
 public class StaffForm implements Validator {
     private String id;
     @NotEmpty(message="{validator.require}")
+    @AlphanumericSymbol(arg = { "Name" }, message = "{validator.alphanumeric}")
     private String name;
     private String kananame;
     @DateFormat(dateFormat="yyyy/MM/dd", message="{validator.date.format}", arg = { "Birthday", "yyyy/MM/dd" })
